@@ -4,333 +4,379 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gordon Owusu Boateng</title>
+
 <style>
-  /* ===== Theme / Colors ===== */
+  /* ========= Theme ========= */
   :root{
+    --bg-page:#f6f7fb;
+    --bg:#fff;
+    --ink:#1d232f;
+    --muted:#667085;
+    --rule:#e6e8ee;
+
     --accent:#6a5acd;           /* slate purple */
-    --accent-darker:#584bb6;
-    --text:#222;
-    --muted:#666;
-    --rule:#ddd;
-    --bg:#ffffff;
-    --bg-page:#fafafa;
+    --accent-2:#8b7cf0;
+    --accent-dark:#4f47b1;
+
+    --chip:#eff1ff;
+    --chip-ink:#3d3796;
+
+    --radius:14px;
+    --shadow:0 6px 24px rgba(18, 24, 40, .06);
   }
 
-  /* ===== Base ===== */
-  html,body{margin:0;padding:0;background:var(--bg-page);color:var(--text);line-height:1.6}
-  body{font-family: Arial, Helvetica, sans-serif; font-size:16px}
-  .container{max-width:980px;margin:24px auto;padding:0 16px}
-
+  /* ========= Base ========= */
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  html{scroll-behavior:smooth}
+  body{
+    font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,Helvetica,sans-serif;
+    color:var(--ink);
+    background:var(--bg-page);
+  }
   a{color:var(--accent);text-decoration:none}
-  a:hover{color:var(--accent-darker); text-decoration:underline}
+  a:hover{color:var(--accent-dark);text-decoration:underline}
+  .container{max-width:1050px;margin:0 auto;padding:24px 20px}
 
-  h1{font-size:2rem; margin:0 0 6px}
-  h2{font-size:1.25rem; color:var(--accent); margin:28px 0 8px}
-  h2 + hr{border:0;border-top:1px solid var(--rule);margin:0 0 12px}
-  h3{margin:18px 0 6px; color:#2b2b2b}
-
-  /* ===== Header block (image left, info right) ===== */
-  .profile{
-    display:grid;
-    grid-template-columns: 180px 1fr;
-    gap:16px;
-    align-items:start;
-    background:var(--bg);
-    border:1px solid var(--rule);
-    border-radius:6px;
-    padding:16px;
+  h1{font-size:clamp(28px,4.2vw,40px);line-height:1.15;margin:0 0 6px}
+  h2{
+    font-size:clamp(18px,2.3vw,22px);
+    margin:0 0 10px;
+    color:var(--accent-dark);
+    letter-spacing:.2px;
   }
+  h3{margin:18px 0 6px;color:#2b2b2b}
+  hr{border:0;border-top:1px solid var(--rule);margin:8px 0 0}
 
-  /* Headshot clean (no square box) */
-  .headshot {
-    max-width: 180px;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;   /* subtle rounding */
-    display: block;
+  /* ========= Top Bar ========= */
+  .topbar{
+    position:sticky;top:0;z-index:10;
+    background:linear-gradient(180deg, #ffffffcc 0%, #ffffffee 70%, #ffffff 100%);
+    backdrop-filter:saturate(150%) blur(6px);
+    border-bottom:1px solid var(--rule);
   }
-
-  .profile-text { line-height:1.6; }
-  .meta small{color:var(--muted)}
-  .meta p{margin:2px 0}
-
-  /* ===== Bracketed nav ===== */
   .nav{
-    margin-top:8px;
-    font-weight:600;
+    display:flex;flex-wrap:wrap;gap:12px;
+    align-items:center;justify-content:center;
+    padding:10px 14px;
   }
   .nav a{
-    display:inline-block;
-    padding:2px 6px;
-    margin-right:8px;
+    font-weight:600;
+    padding:8px 12px;
+    border:1px solid var(--rule);
+    border-radius:999px;
+    background:#fff;
   }
-  .nav a::before{content:"["; color:var(--muted)}
-  .nav a::after{content:"]"; color:var(--muted)}
-  .nav a:hover{text-decoration:none;color:var(--accent-darker)}
+  .nav a:hover{background:var(--chip);border-color:#d8dbff;text-decoration:none}
 
-  /* ===== Sections ===== */
-  section{background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin-top:18px}
-  ul{margin:8px 0 0 18px}
+  /* ========= Profile Header ========= */
+  .profile{
+    display:grid;
+    grid-template-columns: 210px 1fr;
+    gap:22px;
+    align-items:start;
+    margin-top:22px;
+    background:var(--bg);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow:var(--shadow);
+  }
+  .headshot{
+    width:210px; height:210px; border-radius:16px; object-fit:cover; object-position:center top;
+    display:block; box-shadow:0 6px 18px rgba(18,24,40,.08);
+  }
+  .titleblock p{margin:.25rem 0;color:var(--muted)}
+  .links{margin-top:8px}
+  .links a{margin-right:10px;white-space:nowrap}
+
+  /* ========= Section Cards ========= */
+  section{
+    background:var(--bg);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-top:18px;
+    box-shadow:var(--shadow);
+  }
+  ul{margin:10px 0 0 20px}
+  .dotlist li{margin-bottom:8px}
   .muted{color:var(--muted)}
-  .dotlist li{margin-bottom:6px}
 
-  /* Publications styling */
-  .publist { list-style:none; padding-left:0; }
-  .publist li { margin:10px 0; }
-  .year { margin-top:14px; font-weight:700; color:#333; }
-  .venue { font-style:italic; }
-  .doi { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.95em; }
+  /* ========= Publications ========= */
+  .year{
+    margin:18px 0 10px;
+    font-weight:800; color:#2b2b2b;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .year::before{
+    content:""; width:9px; height:9px; border-radius:2px; background:var(--accent);
+    box-shadow:0 0 0 6px #ecebff; display:inline-block;
+  }
 
-  /* ===== Responsive ===== */
-  @media (max-width: 760px){
-    .profile{grid-template-columns: 1fr; text-align:center}
-    .headshot{margin:0 auto}
+  .publist{list-style:none;padding:0;margin:8px 0 18px}
+  .publist li{
+    position:relative;
+    margin:12px 0; padding:12px 14px;
+    border:1px solid var(--rule);
+    border-radius:12px; background:#fff;
+  }
+  .publist li:hover{box-shadow:0 4px 14px rgba(18,24,40,.06)}
+  .venue{
+    background:var(--chip); color:var(--chip-ink);
+    padding:2px 8px; border-radius:999px; font-size:.85rem; white-space:nowrap;
+  }
+  .doi{
+    background:#eef7ff; color:#174b85;
+    padding:2px 8px; border-radius:999px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.85rem;
+  }
+
+  /* ========= Services lists (two columns on wide) ========= */
+  .svc ul{margin:6px 0 10px 18px}
+  @media (min-width:900px){
+    .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  }
+
+  /* ========= Footer ========= */
+  .footer{
+    color:var(--muted);text-align:center;margin:24px 0 36px;
+  }
+
+  /* ========= Responsive ========= */
+  @media (max-width:780px){
+    .profile{grid-template-columns:1fr}
+    .headshot{width:160px;height:160px;margin:0 auto 6px}
+    .titleblock{text-align:center}
+    .links{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
   }
 </style>
 </head>
 <body>
+
+  <!-- Sticky top navigation -->
+  <div class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#publications">Publications</a>
+        <a href="#services">Services</a>
+        <a href="#awards">Awards</a>
+        <a href="#membership">Membership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
   <div class="container">
 
-    <!-- ===== Header / Profile ===== -->
+    <!-- Profile header -->
     <div class="profile">
       <img src="Gordon 2.2.jpg" alt="Gordon Owusu Boateng" class="headshot">
-      <div class="profile-text">
+      <div class="titleblock">
         <h1>Gordon Owusu Boateng, Ph.D.</h1>
-        <p><strong>Assistant Professor</strong><br>
-          Department of Communications and Networking<br>
-          Xi’an Jiaotong–Liverpool University (XJTLU)<br>
-          Suzhou Industrial Park, Suzhou, China<br>
-          Address: No. 111 Ren’ai Road, Suzhou 215123, China<br>
-          <strong>Office:</strong> SC554F, SIP Campus<br>
-          <strong>Email:</strong> 
+        <p><strong>Assistant Professor</strong></p>
+        <p>Department of Communications and Networking · Xi’an Jiaotong–Liverpool University (XJTLU)</p>
+        <p>Suzhou Industrial Park, Suzhou, China · Address: No. 111 Ren’ai Road, Suzhou 215123</p>
+        <p><strong>Office:</strong> SC554F, SIP Campus</p>
+        <p><strong>Email:</strong>
           <a href="mailto:Gordon.Boateng@xjtlu.edu.cn">Gordon.Boateng@xjtlu.edu.cn</a> /
-          <a href="mailto:Gordon.Boateng@liverpool.ac.uk">Gordon.Boateng@liverpool.ac.uk</a><br>
-          <a href="https://scholar.google.com/citations?hl=en&user=mB5H0a0AAAAJ&sortby=pubdate&view_op=list_works&gmla=AH8HC4w2uhpCmHwfO2p0lMyzheCCagj1WMTCQzw1TtuOGfwv2RX8EM4fhcp2UzijeEwVWxqeMLj2-OmlUEenhO66" target="_blank">Google Scholar</a> /
-          <a href="https://linkedin.com/in/gordon-owusu-boateng" target="_blank">LinkedIn</a> /
+          <a href="mailto:Gordon.Boateng@liverpool.ac.uk">Gordon.Boateng@liverpool.ac.uk</a>
+        </p>
+        <p class="links">
+          <a href="https://scholar.google.com/citations?hl=en&user=mB5H0a0AAAAJ&sortby=pubdate&view_op=list_works&gmla=AH8HC4w2uhpCmHwfO2p0lMyzheCCagj1WMTCQzw1TtuOGfwv2RX8EM4fhcp2UzijeEwVWxqeMLj2-OmlUEenhO66" target="_blank">Google Scholar</a> ·
+          <a href="https://linkedin.com/in/gordon-owusu-boateng" target="_blank">LinkedIn</a> ·
           <a href="https://scholar.xjtlu.edu.cn/en/persons/GordonBoateng" target="_blank">XJTLU Page</a>
         </p>
       </div>
     </div>
 
-    <div class="nav">
-      <a href="#about">About Me</a>
-      <a href="#news">News</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#publications">Publications</a>
-      <a href="#services">Services</a>
-      <a href="#awards">Awards</a>
-      <a href="#awards">Professional Membership</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <!-- ===== About ===== -->
+    <!-- About -->
     <section id="about">
       <h2>About Me</h2><hr>
       <p>
-        I am currently an Assistant Professor in the Department of Communications and Networking at XJTLU. I received my Bachelor's degree in Telecommunications Engineering from the Kwame Nkrumah University of Science and Technology (KNUST), Kumasi, Ghana, in 2014. 
-        I received my M.Eng. degree and Ph.D. degree in Computer Science and Technology from the University of Electronic Science and Technology of China (UESTC) in 2019 and 2023, respectively. 
-        Before joining XJTLU in April 2025, I was a Postdoctoral Researcher at the Hybrid Positioning Research Group (HPRG), UESTC, from 2023 to 2024, and a Postdoctoral Fellow at the KU 6G Research Center, Khalifa University, Abu Dhabi, from 2024 to 2025. 
-        From 2014 to 2016, I worked as a Site Engineer (contractor) for Ericsson (Ghana) and TIGO (Ghana). Till now, I have co-authored over 40 SCI papers in top journals such as IEEE COMST, IEEE TMC, IEEE TVT, IEEE TNSM, IEEE TSC, IEEE IoT-J, IEEE COMMAG, IEEE Systems Journal, Elsevier's JNCA, and FGCS. 
-        I have also published and presented at top conference venues such as IEEE INFOCOM and IEEE GLOBECOM. I am a peer-reviewer for more than 40 IEEE, Elsevier, and ACM journals. I am also currently a Guest Editor for the Special Issue: Positioning and Sensing Technologies for Ubiquitous Mobile Intelligence at MDPI Sensors.
-        My research interests include 5G/6G wireless networks, Autonomous Driving (AD), Automated Valet Parking (AVP), Large Language Models (LLMs), reinforcement learning, vehicular networks, target positioning, blockchain technology, and game theory.
+        I am currently an Assistant Professor in the Department of Communications and Networking at XJTLU. I received my B.Sc. in Telecommunications Engineering from KNUST (2014), and my M.Eng. (2019) and Ph.D. (2023) in Computer Science & Technology from UESTC. I later served as a Postdoctoral Researcher with the Hybrid Positioning Research Group (UESTC) and a Postdoctoral Fellow at the KU 6G Research Center, Khalifa University.
       </p>
-
       <p>
-        <strong>Prospective Students:</strong> I am seeking self-motivated students to work with me on LLM-aided Optimization Methods for Autonomous Driving (AD) and Automated Valet Parking (AVP); FYP and Master's students are welcome to reach out via the following email: Gordon.Boateng@xjtlu.edu.cn
+        I design contract-theoretic and reinforcement learning frameworks for shared Automated Valet Parking &amp; Charging (AVPC) and intelligent transportation systems, and explore LLM-assisted scheduling for network/service management. My interests include 5G/6G networks, vehicular networks, target positioning, blockchain, game theory, and multi-agent RL.
       </p>
+      <p class="muted"><strong>Prospective Students:</strong> I’m seeking self-motivated students for LLM-aided optimization in Autonomous Driving (AD) and AVP. Email: Gordon.Boateng@xjtlu.edu.cn</p>
     </section>
 
-    <!-- ===== News ===== -->
+    <!-- News -->
     <section id="news">
       <h2>News</h2><hr>
       <ul class="dotlist">
-        <li>07/2025 — Paper titled <strong>“Weakly-Supervised Crowdsourcing Localization Based on Self-Learning Spatial-Temporal Attention Network”</strong> accepted at <em>IEEE ICCC'25 Workshops - 22 - Task-Oriented and Generative Communications for 6G</em>.</li>
-        <li>06/2025 — Paper titled <strong>“A Multi-Vehicle Cooperative Localization Method for AVP Leveraging Double Deep Q-Network”</strong> accepted at <em>IEEE World Forum on Internet of Things (WF-IoT 2025)</em>.</li>
-        <li>05/2025 — Paper titled <strong>“OSM2Net: A Robust Road Network Extraction Framework from Noisy Indoor Parking OpenStreetMap”</strong> accepted for publication in <em>IEEE Internet of Things Journal (IoT-J)</em>.</li>
-        <li>04/2025 — Joined the Department of Communications and Networking, XJTLU as an Assistant Professor.</li>
-        <li>04/2025 — Paper titled <strong>“Unsupervised Localization Toward Crowdsourced Trajectory Data: A Deep Reinforcement Learning Approach”</strong> accepted for publication in <em>IEEE Transactions on Wireless Communications (TWC)</em>.</li>
-        <li>04/2025 — Paper titled <strong>“A Survey on Large Language Models for Communication, Network, and Service Management: Application Insights, Challenges, and Future Directions”</strong> accepted for publication in <em>IEEE Communications Surveys and Tutorials (COMST)</em>.</li>
-        <li>03/2025 — Paper titled <strong>“Spatial Feature Topology-based Heterogeneous Knowledge Transfer Framework for Long-Term Fingerprint Positioning”</strong> accepted for publication in <em>IEEE Transactions on Vehicular Technology (TVT Correspondence)</em>.</li>
-        <li>02/2025 — Paper titled <strong>“Towards On-Demand Metaverse Service Deployment in 6G Vehicular Networks Using Multimodal LLMs”</strong> accepted at <em>IEEE INFOCOM Metaverse 2025</em>.</li>
-        <li>02/2025 — Paper titled <strong>“A Contract-based Incentive Mechanism for Optimal Pricing and Allocation in Shared AVPC”</strong> accepted at <em>IEEE INFOCOM NGResNet 2025</em>.</li>
+        <li>07/2025 — “Weakly-Supervised Crowdsourcing Localization…” accepted at <em>IEEE ICCC’25 Workshops (TOGC-6G)</em>.</li>
+        <li>06/2025 — “Multi-Vehicle Cooperative Localization for AVP via DDQN” accepted at <em>IEEE WF-IoT 2025</em>.</li>
+        <li>05/2025 — “OSM2Net” accepted in <em>IEEE Internet of Things Journal</em>.</li>
+        <li>04/2025 — Joined XJTLU (Dept. of Communications & Networking) as Assistant Professor.</li>
+        <li>04/2025 — “Unsupervised Localization Toward Crowdsourced Trajectory Data” accepted in <em>IEEE TWC</em>.</li>
+        <li>04/2025 — LLMs survey accepted in <em>IEEE COMST</em>.</li>
+        <li>03/2025 — “Spatial Feature Topology-based Heterogeneous Knowledge Transfer” accepted in <em>IEEE TVT</em>.</li>
+        <li>02/2025 — Accepted papers at <em>IEEE INFOCOM Metaverse 2025</em> & <em>INFOCOM NGResNet 2025</em>.</li>
       </ul>
     </section>
 
-    <!-- ===== Teaching ===== -->
+    <!-- Teaching -->
     <section id="teaching">
       <h2>Teaching at XJTLU</h2><hr>
       <ul>
-        <li>CAN303 Analog and Digital Communications II</li>
+        <li>CAN303 Analog &amp; Digital Communications II</li>
         <li>CAN201 Introduction to Networking</li>
         <li>CAN210 Digital Signal Processing</li>
       </ul>
     </section>
 
-    <!-- ===== Publications ===== -->
+    <!-- Publications -->
     <section id="publications">
       <h2>Publications</h2><hr>
 
       <!-- 2025 -->
       <div class="year">2025</div>
       <ul class="publist">
-        <li>Huang Xia, <b>G. O. Boateng</b> et al., “Weakly-Supervised Crowdsourcing Localization Based on Self-Learning Spatial-Temporal Attention Network,” <span class="venue">IEEE/CIC International Conference on Communications in China (ICCC), Shanghai</span>, Aug. 2025. <i>(to appear in IEEE Xplore)</i></li>
+        <li>Huang Xia, <b>G. O. Boateng</b> et al., “Weakly-Supervised Crowdsourcing Localization Based on Self-Learning Spatial-Temporal Attention Network,” <span class="venue">IEEE/CIC ICCC, Shanghai</span>, Aug. 2025. <i>(to appear in IEEE Xplore)</i></li>
         <li><b>G. O. Boateng</b> et al., “Towards On-Demand Metaverse Service Deployment in 6G Vehicular Networks Using Multimodal LLMs,” <span class="venue">IEEE INFOCOM</span>, London, May 2025. <i>(to appear in IEEE Xplore)</i></li>
-        <li><b>G. O. Boateng</b> et al., “A Survey on Large Language Models for Communication, Network, and Service Management: Application Insights, Challenges, and Future Directions,” <span class="venue">IEEE Communications Surveys & Tutorials</span>, 2025. doi: <a class="doi" href="https://doi.org/10.1109/COMST.2025.3564333" target="_blank">10.1109/COMST.2025.3564333</a></li>
-        <li>X. Guo, <b>G. O. Boateng</b> et al., “Automated Valet Parking and Charging: A Novel Collaborative AI-Empowered Architecture,” <span class="venue">IEEE Communications Magazine</span>, vol. 63, no. 1, Jan. 2025. doi: <a class="doi" href="https://doi.org/10.1109/MCOM.001.2300824" target="_blank">10.1109/MCOM.001.2300824</a></li>
-        <li>Y. Cao, X. Guo, <b>G. O. Boateng</b> et al., “OSM2Net: A Robust Road Network Extraction Framework from Noisy Indoor Parking OpenStreetMap,” <span class="venue">IEEE Internet of Things Journal</span>, 2025. doi: <a class="doi" href="https://doi.org/10.1109/JIOT.2025.3569715" target="_blank">10.1109/JIOT.2025.3569715</a></li>
-        <li>Y. Liu, H. Si, <b>G. O. Boateng</b> et al., “Hard Sample Meta-Learning for CIR NLOS Identification in UWB Positioning,” <span class="venue">IEEE Internet of Things Journal</span>, vol. 12, no. 10, May 2025. doi: <a class="doi" href="https://doi.org/10.1109/JIOT.2025.3525722" target="_blank">10.1109/JIOT.2025.3525722</a></li>
-        <li>H. Si, X. Guo, <b>G. O. Boateng</b> et al., “Spatial Feature Topology-Based Heterogeneous Knowledge Transfer Framework for Long-Term Fingerprint Positioning,” <span class="venue">IEEE Transactions on Vehicular Technology</span>, 2025. doi: <a class="doi" href="https://doi.org/10.1109/TVT.2025.3555656" target="_blank">10.1109/TVT.2025.3555656</a></li>
-        <li>B. Qian, X. Guo, <b>G. O. Boateng</b> et al., “Magnetoquasistatic Positioning: Recent Advances, Applications, Potential Solutions, and Future Prospects,” <span class="venue">IEEE Internet of Things Journal</span>, vol. 12, no. 6, Mar. 2025. doi: <a class="doi" href="https://doi.org/10.1109/JIOT.2024.3521084" target="_blank">10.1109/JIOT.2024.3521084</a></li>
-        <li>H. Si, X. Hou, J. Wang, <b>G. O. Boateng</b>, Z. Zhang, X. Guo, “Unsupervised Localization Toward Crowdsourced Trajectory Data: A Deep Reinforcement Learning Approach,” <span class="venue">IEEE Transactions on Wireless Communications</span>, 2025. doi: <a class="doi" href="https://doi.org/10.1109/TWC.2025.3563766" target="_blank">10.1109/TWC.2025.3563766</a></li>
-        <li>D. Ayepah-Mensah, G. Sun, <b>G. O. Boateng</b>, S. Anokye, G. Liu, “Federated Policy Distillation for Digital Twin-Enabled Intelligent Resource Trading in 5G Network Slicing,” <span class="venue">IEEE Transactions on Network and Service Management</span>, vol. 22, no. 1, Feb. 2025. doi: <a class="doi" href="https://doi.org/10.1109/TNSM.2024.3476480" target="_blank">10.1109/TNSM.2024.3476480</a></li>
-        <li>D. Ayepah-Mensah, G. Sun, <b>G. O. Boateng</b>, S. Anokye, G. Liu, “Blockchain-Enabled Federated Learning-Based Resource Allocation and Trading for Network Slicing in 5G,” <span class="venue">IEEE/ACM Transactions on Networking</span>, vol. 32, no. 1, Feb. 2024 (published 2024, listed for continuity). doi: <a class="doi" href="https://doi.org/10.1109/TNET.2023.3297390" target="_blank">10.1109/TNET.2023.3297390</a></li>
+        <li><b>G. O. Boateng</b> et al., “A Survey on Large Language Models for Communication, Network, and Service Management: Application Insights, Challenges, and Future Directions,” <span class="venue">IEEE Communications Surveys & Tutorials</span>, 2025. <a class="doi" href="https://doi.org/10.1109/COMST.2025.3564333" target="_blank">doi:10.1109/COMST.2025.3564333</a></li>
+        <li>X. Guo, <b>G. O. Boateng</b> et al., “Automated Valet Parking and Charging: A Novel Collaborative AI-Empowered Architecture,” <span class="venue">IEEE Communications Magazine</span>, 63(1), Jan. 2025. <a class="doi" href="https://doi.org/10.1109/MCOM.001.2300824" target="_blank">doi:10.1109/MCOM.001.2300824</a></li>
+        <li>Y. Cao, X. Guo, <b>G. O. Boateng</b> et al., “OSM2Net: A Robust Road Network Extraction Framework from Noisy Indoor Parking OpenStreetMap,” <span class="venue">IEEE Internet of Things Journal</span>, 2025. <a class="doi" href="https://doi.org/10.1109/JIOT.2025.3569715" target="_blank">doi:10.1109/JIOT.2025.3569715</a></li>
+        <li>Y. Liu, H. Si, <b>G. O. Boateng</b> et al., “Hard Sample Meta-Learning for CIR NLOS Identification in UWB Positioning,” <span class="venue">IEEE Internet of Things Journal</span>, 12(10), May 2025. <a class="doi" href="https://doi.org/10.1109/JIOT.2025.3525722" target="_blank">doi:10.1109/JIOT.2025.3525722</a></li>
+        <li>H. Si, X. Guo, <b>G. O. Boateng</b> et al., “Spatial Feature Topology-Based Heterogeneous Knowledge Transfer Framework for Long-Term Fingerprint Positioning,” <span class="venue">IEEE Transactions on Vehicular Technology</span>, 2025. <a class="doi" href="https://doi.org/10.1109/TVT.2025.3555656" target="_blank">doi:10.1109/TVT.2025.3555656</a></li>
+        <li>B. Qian, X. Guo, <b>G. O. Boateng</b> et al., “Magnetoquasistatic Positioning: Recent Advances, Applications, Potential Solutions, and Future Prospects,” <span class="venue">IEEE Internet of Things Journal</span>, 12(6), Mar. 2025. <a class="doi" href="https://doi.org/10.1109/JIOT.2024.3521084" target="_blank">doi:10.1109/JIOT.2024.3521084</a></li>
+        <li>H. Si, X. Hou, J. Wang, <b>G. O. Boateng</b>, Z. Zhang, X. Guo, “Unsupervised Localization Toward Crowdsourced Trajectory Data: A Deep Reinforcement Learning Approach,” <span class="venue">IEEE Transactions on Wireless Communications</span>, 2025. <a class="doi" href="https://doi.org/10.1109/TWC.2025.3563766" target="_blank">doi:10.1109/TWC.2025.3563766</a></li>
+        <li>D. Ayepah-Mensah, G. Sun, <b>G. O. Boateng</b>, S. Anokye, G. Liu, “Federated Policy Distillation for Digital Twin-Enabled Intelligent Resource Trading in 5G Network Slicing,” <span class="venue">IEEE Transactions on Network and Service Management</span>, 22(1), Feb. 2025. <a class="doi" href="https://doi.org/10.1109/TNSM.2024.3476480" target="_blank">doi:10.1109/TNSM.2024.3476480</a></li>
+        <li>D. Ayepah-Mensah, G. Sun, <b>G. O. Boateng</b>, S. Anokye, G. Liu, “Blockchain-Enabled Federated Learning-Based Resource Allocation and Trading for Network Slicing in 5G,” <span class="venue">IEEE/ACM Transactions on Networking</span>, 32(1), Feb. 2024 (listed for continuity). <a class="doi" href="https://doi.org/10.1109/TNET.2023.3297390" target="_blank">doi:10.1109/TNET.2023.3297390</a></li>
       </ul>
 
       <!-- 2024 -->
       <div class="year">2024</div>
       <ul class="publist">
-        <li><b>G. O. Boateng</b> et al., “Automated Valet Parking and Charging: A Dynamic Pricing and Reservation-Based Framework Leveraging Multi-Agent RL,” <span class="venue">IEEE Transactions on Intelligent Vehicles</span>, 2024. doi: <a class="doi" href="https://doi.org/10.1109/TIV.2024.3421524" target="_blank">10.1109/TIV.2024.3421524</a></li>
-        <li>G. Sun, <b>G. O. Boateng</b>, L. Luo, H. Chen, D. A. Mensah, G. Liu, “Competitive Pricing for Resource Trading in Sliced Mobile Networks: A Multi-Agent Reinforcement Learning Approach,” <span class="venue">IEEE Transactions on Mobile Computing</span>, vol. 23, no. 5, May 2024. doi: <a class="doi" href="https://doi.org/10.1109/TMC.2023.3281203" target="_blank">10.1109/TMC.2023.3281203</a></li>
-        <li>A. M. Seid, <b>G. O. Boateng</b>, B. Mareri, G. Sun, W. Jiang, “Resource Allocation and QoE Maximization in Aerial MEC-empowered Metaverse Service: A CCM-Multi-agent DRL approach,” <span class="venue">IEEE GLOBECOM</span>, Cape Town, 2024, pp. 608-613. doi: <a class="doi" href="https://doi.org/10.1109/GLOBECOM52923.2024.10901198" target="_blank">10.1109/GLOBECOM52923.2024.10901198</a></li>
-        <li>S. R. A. Sebakara, G. Sun, <b>G. O. Boateng</b>, B. Mareri, R. Ou, G. Liu, “SNAF: DRL-Based Interdependent E2E Resource Slicing Scheme for a Virtualized Network,” <span class="venue">IEEE Transactions on Vehicular Technology</span>, vol. 72, no. 7, Jul. 2023 (listed for continuity). doi: <a class="doi" href="https://doi.org/10.1109/TVT.2023.3249052" target="_blank">10.1109/TVT.2023.3249052</a></li>
-        <li>G. Sun, <b>G. O. Boateng</b>, K. Liu, D. Ayepah-Mensah, G. Liu, “Dynamic Pricing for Vehicle Dispatching in Mobility-as-a-Service Market via Multi-Agent Deep Reinforcement Learning,” <span class="venue">IEEE Transactions on Vehicular Technology</span>, vol. 73, no. 8, Aug. 2024. doi: <a class="doi" href="https://doi.org/10.1109/TVT.2024.3378968" target="_blank">10.1109/TVT.2024.3378968</a></li>
+        <li><b>G. O. Boateng</b> et al., “Automated Valet Parking and Charging: A Dynamic Pricing and Reservation-Based Framework Leveraging Multi-Agent RL,” <span class="venue">IEEE Transactions on Intelligent Vehicles</span>, 2024. <a class="doi" href="https://doi.org/10.1109/TIV.2024.3421524" target="_blank">doi:10.1109/TIV.2024.3421524</a></li>
+        <li>G. Sun, <b>G. O. Boateng</b>, L. Luo, H. Chen, D. A. Mensah, G. Liu, “Competitive Pricing for Resource Trading in Sliced Mobile Networks: A Multi-Agent Reinforcement Learning Approach,” <span class="venue">IEEE Transactions on Mobile Computing</span>, 23(5), May 2024. <a class="doi" href="https://doi.org/10.1109/TMC.2023.3281203" target="_blank">doi:10.1109/TMC.2023.3281203</a></li>
+        <li>A. M. Seid, <b>G. O. Boateng</b>, B. Mareri, G. Sun, W. Jiang, “Resource Allocation and QoE Maximization in Aerial MEC-empowered Metaverse Service: A CCM-Multi-agent DRL approach,” <span class="venue">IEEE GLOBECOM</span>, Cape Town, 2024, pp. 608–613. <a class="doi" href="https://doi.org/10.1109/GLOBECOM52923.2024.10901198" target="_blank">doi:10.1109/GLOBECOM52923.2024.10901198</a></li>
+        <li>S. R. A. Sebakara, G. Sun, <b>G. O. Boateng</b>, B. Mareri, R. Ou, G. Liu, “SNAF: DRL-Based Interdependent E2E Resource Slicing Scheme for a Virtualized Network,” <span class="venue">IEEE Transactions on Vehicular Technology</span>, 72(7), 2023 (listed for continuity). <a class="doi" href="https://doi.org/10.1109/TVT.2023.3249052" target="_blank">doi:10.1109/TVT.2023.3249052</a></li>
+        <li>G. Sun, <b>G. O. Boateng</b>, K. Liu, D. Ayepah-Mensah, G. Liu, “Dynamic Pricing for Vehicle Dispatching in Mobility-as-a-Service via Multi-Agent DRL,” <span class="venue">IEEE Transactions on Vehicular Technology</span>, 73(8), Aug. 2024. <a class="doi" href="https://doi.org/10.1109/TVT.2024.3378968" target="_blank">doi:10.1109/TVT.2024.3378968</a></li>
       </ul>
 
       <!-- 2023 -->
       <div class="year">2023</div>
       <ul class="publist">
-        <li><b>G. O. Boateng</b>, G. Sun, D. A. Mensah, D. M. Doe, R. Ou, G. Liu, “Consortium Blockchain-Based Spectrum Trading for Network Slicing in 5G RAN: A Multi-Agent Deep Reinforcement Learning Approach,” <span class="venue">IEEE Transactions on Mobile Computing</span>, vol. 22, no. 10, pp. 5801-5815, Oct. 2023. doi: <a class="doi" href="https://doi.org/10.1109/TMC.2022.3190449" target="_blank">10.1109/TMC.2022.3190449</a></li>
-        <li>R. Ou, G. Sun, D. Ayepah-Mensah, <b>G. O. Boateng</b>, G. Liu, “Two-Tier Resource Allocation for Multitenant Network Slicing: A Federated Deep Reinforcement Learning Approach,” <span class="venue">IEEE Internet of Things Journal</span>, vol. 10, no. 22, pp. 20174-20187, Nov. 2023. doi: <a class="doi" href="https://doi.org/10.1109/JIOT.2023.3283553" target="_blank">10.1109/JIOT.2023.3283553</a></li>
+        <li><b>G. O. Boateng</b>, G. Sun, D. A. Mensah, D. M. Doe, R. Ou, G. Liu, “Consortium Blockchain-Based Spectrum Trading for Network Slicing in 5G RAN: A Multi-Agent DRL Approach,” <span class="venue">IEEE Transactions on Mobile Computing</span>, 22(10), pp. 5801–5815, Oct. 2023. <a class="doi" href="https://doi.org/10.1109/TMC.2022.3190449" target="_blank">doi:10.1109/TMC.2022.3190449</a></li>
+        <li>R. Ou, G. Sun, D. Ayepah-Mensah, <b>G. O. Boateng</b>, G. Liu, “Two-Tier Resource Allocation for Multitenant Network Slicing: A Federated DRL Approach,” <span class="venue">IEEE Internet of Things Journal</span>, 10(22), pp. 20174–20187, Nov. 2023. <a class="doi" href="https://doi.org/10.1109/JIOT.2023.3283553" target="_blank">doi:10.1109/JIOT.2023.3283553</a></li>
       </ul>
 
       <!-- 2022 -->
       <div class="year">2022</div>
       <ul class="publist">
-        <li><b>G. O. Boateng</b>, D. Ayepah-Mensah, D. M. Doe, A. Mohammed, G. Sun, G. Liu, “Blockchain-Enabled Resource Trading and Deep Reinforcement Learning-Based Autonomous RAN Slicing in 5G,” <span class="venue">IEEE Transactions on Network and Service Management</span>, vol. 19, no. 1, pp. 216-227, Mar. 2022. doi: <a class="doi" href="https://doi.org/10.1109/TNSM.2021.3124046" target="_blank">10.1109/TNSM.2021.3124046</a></li>
-        <li><b>G. O. Boateng</b>, G. Liu, “Cooperative Resource Trading for Network Slicing in Industrial IoT: A Multi-Agent DRL Approach,” <span class="venue">34th International Teletraffic Congress (ITC-34)</span>, Shenzhen, 2022, pp. 1-6.</li>
-        <li>B. Mareri, <b>G. O. Boateng</b>, R. Ou, G. Sun, Y. Pang, G. Liu, “MANTA: Multi-Lane Capsule Network Assisted Traffic Classification for 5G Network Slicing,” <span class="venue">IEEE Wireless Communications Letters</span>, vol. 11, no. 9, pp. 1905-1909, Sept. 2022. doi: <a class="doi" href="https://doi.org/10.1109/LWC.2022.3186529" target="_blank">10.1109/LWC.2022.3186529</a></li>
+        <li><b>G. O. Boateng</b>, D. Ayepah-Mensah, D. M. Doe, A. Mohammed, G. Sun, G. Liu, “Blockchain-Enabled Resource Trading and DRL-Based Autonomous RAN Slicing in 5G,” <span class="venue">IEEE Transactions on Network and Service Management</span>, 19(1), pp. 216–227, Mar. 2022. <a class="doi" href="https://doi.org/10.1109/TNSM.2021.3124046" target="_blank">doi:10.1109/TNSM.2021.3124046</a></li>
+        <li><b>G. O. Boateng</b>, G. Liu, “Cooperative Resource Trading for Network Slicing in Industrial IoT: A Multi-Agent DRL Approach,” <span class="venue">ITC-34</span>, Shenzhen, 2022, pp. 1–6.</li>
+        <li>B. Mareri, <b>G. O. Boateng</b>, R. Ou, G. Sun, Y. Pang, G. Liu, “MANTA: Multi-Lane Capsule Network Assisted Traffic Classification for 5G Network Slicing,” <span class="venue">IEEE Wireless Communications Letters</span>, 11(9), pp. 1905–1909, Sept. 2022. <a class="doi" href="https://doi.org/10.1109/LWC.2022.3186529" target="_blank">doi:10.1109/LWC.2022.3186529</a></li>
       </ul>
 
       <!-- 2021 -->
       <div class="year">2021</div>
       <ul class="publist">
-        <li>A. M. Seid, <b>G. O. Boateng</b>, S. Anokye, T. Kwantwi, G. Sun, G. Liu, “Collaborative Computation Offloading and Resource Allocation in Multi-UAV-Assisted IoT Networks: A Deep Reinforcement Learning Approach,” <span class="venue">IEEE Internet of Things Journal</span>, vol. 8, no. 15, pp. 12203-12218, Aug. 2021. doi: <a class="doi" href="https://doi.org/10.1109/JIOT.2021.3063188" target="_blank">10.1109/JIOT.2021.3063188</a></li>
-        <li>A. M. Seid, <b>G. O. Boateng</b>, B. Mareri, G. Sun, W. Jiang, “Multi-Agent DRL for Task Offloading and Resource Allocation in Multi-UAV Enabled IoT Edge Network,” <span class="venue">IEEE Transactions on Network and Service Management</span>, vol. 18, no. 4, pp. 4531-4547, Dec. 2021. doi: <a class="doi" href="https://doi.org/10.1109/TNSM.2021.3096673" target="_blank">10.1109/TNSM.2021.3096673</a></li>
-        <li>G. Sun, K. Liu, <b>G. O. Boateng</b>, D. Ayepah-Mensah, G. Liu, W. Jiang, “Intelligent Cruise Guidance and Vehicle Resource Management With Deep Reinforcement Learning,” <span class="venue">IEEE Internet of Things Journal</span>, vol. 9, no. 5, pp. 3574-3585, Mar. 2022 (published 2022, listed for continuity). doi: <a class="doi" href="https://doi.org/10.1109/JIOT.2021.3098779" target="_blank">10.1109/JIOT.2021.3098779</a></li>
+        <li>A. M. Seid, <b>G. O. Boateng</b>, S. Anokye, T. Kwantwi, G. Sun, G. Liu, “Collaborative Computation Offloading and Resource Allocation in Multi-UAV-Assisted IoT Networks: A DRL Approach,” <span class="venue">IEEE Internet of Things Journal</span>, 8(15), pp. 12203–12218, Aug. 2021. <a class="doi" href="https://doi.org/10.1109/JIOT.2021.3063188" target="_blank">doi:10.1109/JIOT.2021.3063188</a></li>
+        <li>A. M. Seid, <b>G. O. Boateng</b>, B. Mareri, G. Sun, W. Jiang, “Multi-Agent DRL for Task Offloading and Resource Allocation in Multi-UAV Enabled IoT Edge Network,” <span class="venue">IEEE Transactions on Network and Service Management</span>, 18(4), pp. 4531–4547, Dec. 2021. <a class="doi" href="https://doi.org/10.1109/TNSM.2021.3096673" target="_blank">doi:10.1109/TNSM.2021.3096673</a></li>
+        <li>G. Sun, K. Liu, <b>G. O. Boateng</b>, D. Ayepah-Mensah, G. Liu, W. Jiang, “Intelligent Cruise Guidance and Vehicle Resource Management With DRL,” <span class="venue">IEEE Internet of Things Journal</span>, 9(5), pp. 3574–3585, Mar. 2022 (listed for continuity). <a class="doi" href="https://doi.org/10.1109/JIOT.2021.3098779" target="_blank">doi:10.1109/JIOT.2021.3098779</a></li>
       </ul>
 
       <!-- 2020 -->
       <div class="year">2020</div>
       <ul class="publist">
-        <li>G. Sun, <b>G. O. Boateng</b>, D. Ayepah-Mensah, G. Liu, J. Wei, “Autonomous Resource Slicing for Virtualized Vehicular Networks With D2D Communications Based on Deep Reinforcement Learning,” <span class="venue">IEEE Systems Journal</span>, vol. 14, no. 4, pp. 4694-4705, Dec. 2020. doi: <a class="doi" href="https://doi.org/10.1109/JSYST.2020.2982857" target="_blank">10.1109/JSYST.2020.2982857</a></li>
+        <li>G. Sun, <b>G. O. Boateng</b>, D. Ayepah-Mensah, G. Liu, J. Wei, “Autonomous Resource Slicing for Virtualized Vehicular Networks with D2D Based on DRL,” <span class="venue">IEEE Systems Journal</span>, 14(4), pp. 4694–4705, Dec. 2020. <a class="doi" href="https://doi.org/10.1109/JSYST.2020.2982857" target="_blank">doi:10.1109/JSYST.2020.2982857</a></li>
       </ul>
 
       <!-- 2019 -->
       <div class="year">2019</div>
       <ul class="publist">
-        <li>G. Sun, <b>G. O. Boateng</b>, H. Chen, D. A. Mensah, G. Liu, “Autonomous Cache Resource Slicing and Content Placement at Virtualized Mobile Edge Network,” <span class="venue">IEEE Access</span>, vol. 7, pp. 84727-84743, 2019. doi: <a class="doi" href="https://doi.org/10.1109/ACCESS.2019.2923021" target="_blank">10.1109/ACCESS.2019.2923021</a></li>
-        <li>G. Sun, Z. T. Gebrekidan, <b>G. O. Boateng</b>, D. Ayepah-Mensah, W. Jiang, “Dynamic Reservation and Deep Reinforcement Learning Based Autonomous Resource Slicing for Virtualized Radio Access Networks,” <span class="venue">IEEE Access</span>, vol. 7, pp. 45758-45772, 2019. doi: <a class="doi" href="https://doi.org/10.1109/ACCESS.2019.2909670" target="_blank">10.1109/ACCESS.2019.2909670</a></li>
-        <li>G. Sun, K. Xiong, S. S. R. Adolphe, <b>G. O. Boateng</b>, G. Liu, G. Sun, “Dynamic Resource Provisioning and Resource Customization for Mixed Traffics in Virtualized Radio Access Network,” <span class="venue">IEEE Access</span>, vol. 7, pp. 115440-115453, 2019. doi: <a class="doi" href="https://doi.org/10.1109/ACCESS.2019.2935606" target="_blank">10.1109/ACCESS.2019.2935606</a></li>
+        <li>G. Sun, <b>G. O. Boateng</b>, H. Chen, D. A. Mensah, G. Liu, “Autonomous Cache Resource Slicing and Content Placement at Virtualized Mobile Edge Network,” <span class="venue">IEEE Access</span>, 7, pp. 84727–84743, 2019. <a class="doi" href="https://doi.org/10.1109/ACCESS.2019.2923021" target="_blank">doi:10.1109/ACCESS.2019.2923021</a></li>
+        <li>G. Sun, Z. T. Gebrekidan, <b>G. O. Boateng</b>, D. Ayepah-Mensah, W. Jiang, “Dynamic Reservation and DRL-Based Autonomous Resource Slicing for Virtualized RAN,” <span class="venue">IEEE Access</span>, 7, pp. 45758–45772, 2019. <a class="doi" href="https://doi.org/10.1109/ACCESS.2019.2909670" target="_blank">doi:10.1109/ACCESS.2019.2909670</a></li>
+        <li>G. Sun, K. Xiong, S. S. R. Adolphe, <b>G. O. Boateng</b>, G. Liu, G. Sun, “Dynamic Resource Provisioning and Customization for Mixed Traffics in Virtualized RAN,” <span class="venue">IEEE Access</span>, 7, pp. 115440–115453, 2019. <a class="doi" href="https://doi.org/10.1109/ACCESS.2019.2935606" target="_blank">doi:10.1109/ACCESS.2019.2935606</a></li>
       </ul>
 
       <!-- 2018 -->
       <div class="year">2018</div>
       <ul class="publist">
-        <li>G. Sun, H. Al-Ward, <b>G. O. Boateng</b>, W. Jiang, “Content-Aware Caching in SDN-Enabled Virtualized Wireless D2D Networks to Reduce Visiting Latency,” <span class="venue">IEEE MASS</span>, Chengdu, 2018, pp. 149-150. doi: <a class="doi" href="https://doi.org/10.1109/MASS.2018.00032" target="_blank">10.1109/MASS.2018.00032</a></li>
+        <li>G. Sun, H. Al-Ward, <b>G. O. Boateng</b>, W. Jiang, “Content-Aware Caching in SDN-Enabled Virtualized Wireless D2D Networks to Reduce Visiting Latency,” <span class="venue">IEEE MASS</span>, Chengdu, 2018, pp. 149–150. <a class="doi" href="https://doi.org/10.1109/MASS.2018.00032" target="_blank">doi:10.1109/MASS.2018.00032</a></li>
       </ul>
     </section>
 
+    <!-- Services -->
+    <section id="services" class="svc">
+      <h2>External Services</h2><hr>
+      <div class="svc-grid">
+        <div>
+          <h3>Editorial Board Member</h3>
+          <ul><li>Guest Editor, Special Issue: <em>Positioning & Sensing Technologies for Ubiquitous Mobile Intelligence</em>, MDPI Sensors.</li></ul>
 
-       <!-- ===== Services ===== -->
-    <section id="services">
-      <h2>Services</h2><hr>
-      <ul>
-        <li><strong>Editorial Board Member</strong>
+          <h3>Conference Reviewer</h3>
           <ul>
-            <li>Guest Editor for the Special Issue: Positioning and Sensing Technologies for Ubiquitous Mobile Intelligence at MDPI Sensors.</li>
+            <li>IEEE Blockchain (2021–2023)</li>
+            <li>IEEE IPCCC (2023)</li>
+            <li>International Congress on Blockchain & Applications (2021)</li>
           </ul>
-        </li>
-
-        <li><strong>Journal Reviewer</strong>
+        </div>
+        <div>
+          <h3>Journal Reviewer</h3>
           <ul>
-            <li>IEEE Open Journal of the Communication Society (OJCOMS)</li>
             <li>IEEE Internet of Things Journal (IoT-J)</li>
-            <li>IEEE Network Magazine</li>
-            <li>IEEE Transactions on Consumer Electronics</li>
-            <li>ACM Transactions on Internet Technology (TOIT)</li>
-            <li>IEEE Communications Standards Magazine</li>
-            <li>Engineering Applications of Artificial Intelligence (EAAI)</li>
-            <li>IEEE Journal on Selected Areas in Communications (JSAC)</li>
-            <li>IEEE Networking Letters</li>
-            <li>IEEE Transactions on Intelligent Transportation Systems (T-ITS)</li>
-            <li>ACM Journal on Autonomous Transportation Systems (JATS)</li>
-            <li>IEEE Vehicular Technology Magazine (VTM)</li>
-            <li>IEEE Systems Journal</li>
-            <li>IEEE Transactions on Network Science Engineering (TNSE)</li>
-            <li>IEEE Consumer Electronics Magazine</li>
-            <li>China Communications (CNCOMM)</li>
-            <li>Journal of Network and Computer Applications (JNCA)</li>
-            <li>ACM Transactions on Internet Technology (TOIT)</li>
-            <li>IEEE Computer</li>
-            <li>IEEE Selected Areas in Signal Processing</li>
-            <li>IEEE Transactions on Green Communication and Networking (TGCN)</li>
-            <li>IEEE Transactions on Mobile Computing (TMC)</li>
-            <li>IEEE Transactions on Vehicular Technology (TVT)</li>
+            <li>IEEE TMC, TVT, T-ITS, TNSM, TSC</li>
+            <li>IEEE OJ-COMS, Network, Systems Journal</li>
+            <li>ACM TOIT, JATS; EAAI; CNCOMM; JNCA</li>
           </ul>
-        </li>
 
+          <h3>Technical Program Committee</h3>
+          <ul>
+            <li>ACM AIBC (2024–2025)</li>
+            <li>ACM BIOTC (2024–2025)</li>
+            <li>ACM ICBTA (2023)</li>
+          </ul>
+        </div>
+      </div>
+      <ul>
+        <li>Student Awards Committee, U.S. CUTC (2023–present)</li>
+        <li>Expert, Jiangsu Provincial Dept. of Industry & IT (2025–present)</li>
+        <li>Member of IEEE and IET</li>
+      </ul>
     </section>
 
-
-
-    
-    <!-- ===== Awards ===== -->
+    <!-- Awards -->
     <section id="awards">
       <h2>Awards &amp; Honors</h2><hr>
       <ul>
-        <li>Huawei HCIA-5G Course (cert. no. EBGTC00000410MOOc202109033968).</li>
-        <li>The Bits and Bytes of Computer Networking (cert. no. VQYZLMDM46N3).</li>
-        <li>Python Data Structures (cert. no. TT4BRYU9U9SL).</li>
-        <li>Operating Systems and You; Becoming a Power User (cert. no. GSB5GP68FGZK).</li>
-        <li>Google Technical Support Fundamentals Certificate (cert. no. JXU3V33ACS2E).</li>
-        <li>Blockchain Basics Certificate (cert. no. BXPTJHGDYWMM).</li>
-        <li>Smart Contracts (cert. no. 8K75B9PGBEFM).</li>
-        <li>Programming for Everybody (Getting Started with Python) (cert. no. 9ZBJMYA286BV).</li>
-        <li>Publons Academy Practical Peer Review Course.</li>
-        <li>UESTC International Students’ Academic Achievement Awards 2022, First Prize.</li>
-        <li>UESTC International Students’ Academic Achievement Awards 2020, First Prize.</li>
-        <li>UESTC International Students’ Academic Achievement Awards 2018, First Prize.</li>
+        <li>UESTC International Students’ Academic Achievement Awards — First Prize (2018, 2020, 2022)</li>
+        <li>Publons Academy Practical Peer Review Course</li>
+        <li>Huawei HCIA-5G; Google Tech Support Fundamentals; Python Data Structures; Operating Systems & You; Blockchain Basics; Smart Contracts; Programming for Everybody</li>
       </ul>
     </section>
 
-    <!-- ===== Membership ===== -->
+    <!-- Membership -->
     <section id="membership">
       <h2>Professional Membership</h2><hr>
       <ul>
-        <li>Institute of Electrical and Electronics Engineers (IEEE) – Member</li>
-        <li>Association for Computing Machinery (ACM) – Professional Membership</li>
+        <li>Institute of Electrical and Electronics Engineers (IEEE) — Member</li>
+        <li>Association for Computing Machinery (ACM) — Professional Member</li>
       </ul>
     </section>
-    
 
-    <!-- ===== Contact ===== -->
+    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2><hr>
-      <p><strong>Email:</strong><br>
+      <p><strong>Email</strong><br>
         <a href="mailto:boatenggordon48@gmail.com">boatenggordon48@gmail.com</a><br>
         <a href="mailto:Gordon.Boateng@xjtlu.edu.cn">Gordon.Boateng@xjtlu.edu.cn</a><br>
         <a href="mailto:Gordon.Boateng@liverpool.ac.uk">Gordon.Boateng@liverpool.ac.uk</a>
       </p>
       <p>
         <a href="https://linkedin.com/in/gordon-owusu-boateng" target="_blank">LinkedIn</a> ·
-        <a href="https://scholar.google.com/citations?hl=en&user=mB5H0a0AAAAJ&sortby=pubdate&view_op=list_works&gmla=AH8HC4w2uhpCmHwfO2p0lMyzheCCagj1WMTCQzw1TtuOGfwv2RX8EM4fhcp2UzijeEwVWxqeMLj2-OmlUEenhO66" target="_blank">Google Scholar</a> ·
-        <a href="https://scholar.xjtlu.edu.cn/en/persons/GordonBoateng" target="_blank">XJTLU Page</a> ·
+        <a href="https://scholar.google.com/citations?hl=en&user=mB5H0a0AAAAJ&sortby=pubdate" target="_blank">Google Scholar</a> ·
+        <a href="https://scholar.xjtlu.edu.cn/en/persons/GordonBoateng" target="_blank">XJTLU Page</a>
       </p>
     </section>
 
-    <p class="muted" style="text-align:center;margin:18px 0 30px;">
-      © <span id="year"></span> Gordon Owusu Boateng.
-    </p>
+    <p class="footer">© <span id="year"></span> Gordon Owusu Boateng.</p>
   </div>
 
 <script>
