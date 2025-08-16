@@ -7,15 +7,14 @@
 <style>
   /* ===== Theme / Colors ===== */
   :root{
-  --accent: crimson;        /* main accent color */
-  --accent-darker: crimson; /* hover/emphasis, set same crimson */
-  --text: #000000;          /* main text = black */
-  --muted: #000000;         /* secondary text = black */
-  --rule: #000000;          /* border lines = black */
-  --bg: #ffffff;            /* content boxes remain white */
-  --bg-page: #3b5998;          /* whole page background = navy blue */
-}
-
+    --accent: crimson;        /* main accent color */
+    --accent-darker: crimson; /* hover/emphasis, set same crimson */
+    --text: #000000;          /* main text = black */
+    --muted: #000000;         /* secondary text = black */
+    --rule: #000000;          /* border lines = black */
+    --bg: #ffffff;            /* content boxes remain white */
+    --bg-page: #3b5998;       /* lighter navy page background */
+  }
 
   /* ===== Base ===== */
   html,body{margin:0;padding:0;background:var(--bg-page);color:var(--text);line-height:1.6}
@@ -55,15 +54,22 @@
   .meta small{color:var(--muted)}
   .meta p{margin:2px 0}
 
-  /* ===== Bracketed nav ===== */
+  /* ===== White rounded nav bar ===== */
   .nav{
-    margin-top:8px;
-    font-weight:600;
+    background:#ffffff;               /* white background */
+    border:1px solid var(--rule);     /* black border */
+    border-radius:8px;                /* rounded corners */
+    padding:10px 14px;
+    text-align:center;
+    margin:12px auto 0;
+    box-shadow:2px 2px 6px rgba(0,0,0,.1); /* subtle shadow */
+    width: fit-content;               /* shrink-wrap to links */
   }
   .nav a{
     display:inline-block;
-    padding:2px 6px;
-    margin-right:8px;
+    padding:2px 8px;
+    margin:0 8px;
+    font-weight:700;
   }
   .nav a::before{content:"["; color:var(--muted)}
   .nav a::after{content:"]"; color:var(--muted)}
@@ -86,6 +92,7 @@
   @media (max-width: 760px){
     .profile{grid-template-columns: 1fr; text-align:center}
     .headshot{margin:0 auto}
+    .nav{width:auto} /* let it fill on small screens */
   }
 </style>
 </head>
@@ -113,6 +120,7 @@
       </div>
     </div>
 
+    <!-- ===== Nav (white bar) ===== -->
     <div class="nav">
       <a href="#about">About Me</a>
       <a href="#news">News</a>
@@ -120,7 +128,7 @@
       <a href="#publications">Publications</a>
       <a href="#services">Services</a>
       <a href="#awards">Awards</a>
-      <a href="#awards">Professional Membership</a>
+      <a href="#membership">Professional Membership</a>
       <a href="#contact">Contact</a>
     </div>
 
@@ -241,8 +249,7 @@
       </ul>
     </section>
 
-
-       <!-- ===== Services ===== -->
+    <!-- ===== Services ===== -->
     <section id="services">
       <h2>Services</h2><hr>
       <ul>
@@ -279,12 +286,9 @@
             <li>IEEE Transactions on Vehicular Technology (TVT)</li>
           </ul>
         </li>
-
+      </ul>
     </section>
 
-
-
-    
     <!-- ===== Awards ===== -->
     <section id="awards">
       <h2>Awards &amp; Honors</h2><hr>
@@ -312,7 +316,6 @@
         <li>Association for Computing Machinery (ACM) – Professional Membership</li>
       </ul>
     </section>
-    
 
     <!-- ===== Contact ===== -->
     <section id="contact">
@@ -325,7 +328,7 @@
       <p>
         <a href="https://linkedin.com/in/gordon-owusu-boateng" target="_blank">LinkedIn</a> ·
         <a href="https://scholar.google.com/citations?hl=en&user=mB5H0a0AAAAJ&sortby=pubdate&view_op=list_works&gmla=AH8HC4w2uhpCmHwfO2p0lMyzheCCagj1WMTCQzw1TtuOGfwv2RX8EM4fhcp2UzijeEwVWxqeMLj2-OmlUEenhO66" target="_blank">Google Scholar</a> ·
-        <a href="https://scholar.xjtlu.edu.cn/en/persons/GordonBoateng" target="_blank">XJTLU Page</a> ·
+        <a href="https://scholar.xjtlu.edu.cn/en/persons/GordonBoateng" target="_blank">XJTLU Page</a>
       </p>
     </section>
 
