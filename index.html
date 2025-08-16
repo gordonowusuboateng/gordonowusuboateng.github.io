@@ -40,18 +40,20 @@
     padding:16px;
   }
   /* Headshot: portrait, same visual size as example */
-  .headshot-wrap{
-    width:180px;               /* column width */
-  }
-  .headshot{
-    width:100%;
-    height:220px;              /* portrait height to match sample */
-    object-fit:cover;          /* crop without distortion */
-    border-radius:6px;
-    border:1px solid var(--rule);
-    display:block;
-    background:#eee;
-  }
+  .headshot-wrap {
+  width: 220px;
+  height: 220px;          /* make it square */
+}
+
+.headshot {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* keep the whole image visible */
+  background: #fff;       /* background fill */
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  display: block;
+}
   .meta small{color:var(--muted)}
   .meta p{margin:2px 0}
 
