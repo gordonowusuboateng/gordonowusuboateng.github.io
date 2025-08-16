@@ -39,21 +39,20 @@
     border-radius:6px;
     padding:16px;
   }
-  /* Headshot: portrait, same visual size as example */
-  .headshot-wrap {
-  width: 220px;
-  height: 220px;          /* make it square */
-}
 
-.headshot {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;    /* keep the whole image visible */
-  background: #fff;       /* background fill */
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  display: block;
-}
+  /* Headshot clean (no square box) */
+  .headshot {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;   /* subtle rounding */
+    display: block;
+  }
+
+  .profile-text {
+    line-height: 1.6;
+  }
+
   .meta small{color:var(--muted)}
   .meta p{margin:2px 0}
 
@@ -79,9 +78,8 @@
 
   /* ===== Responsive ===== */
   @media (max-width: 760px){
-    .profile{grid-template-columns: 1fr}
-    .headshot-wrap{width:100%; max-width:320px}
-    .headshot{height:260px; margin:0 auto}
+    .profile{grid-template-columns: 1fr; text-align:center}
+    .headshot{margin:0 auto}
   }
 </style>
 </head>
@@ -90,33 +88,29 @@
 
     <!-- ===== Header / Profile ===== -->
     <div class="profile">
-  <div class="headshot-wrap">
-    <img src="headshot.png" alt="Gordon Owusu Boateng" class="headshot">
-  </div>
-  <div class="profile-text">
-    <h1>Gordon Owusu Boateng, Ph.D.</h1>
-    <p><strong>Assistant Professor</strong><br>
-      Department of Communications and Networking<br>
-      Xi’an Jiaotong–Liverpool University (XJTLU)<br>
-      Suzhou Industrial Park, Suzhou, China<br>
-      Address: No. 111 Ren’ai Road, Suzhou 215123, China<br>
-      <strong>Office:</strong> SC554F, SIP Campus<br>
-      <strong>Email:</strong> <a href="mailto:Gordon.Boateng@xjtlu.edu.cn">Gordon.Boateng@xjtlu.edu.cn</a><br>
-      <a href="https://scholar.google.com">Google Scholar</a> /
-      <a href="https://linkedin.com/in/gordon-owusu-boateng">LinkedIn</a>
-    </p>
-  </div>
-</div>
-
-        <div class="nav">
-          <a href="#about">About Me</a>
-          <a href="#news">News</a>
-          <a href="#teaching">Teaching</a>
-          <a href="#publications">Publications</a>
-          <a href="#awards">Awards</a>
-          <a href="#contact">Contact</a>
-        </div>
+      <img src="headshot.png" alt="Gordon Owusu Boateng" class="headshot">
+      <div class="profile-text">
+        <h1>Gordon Owusu Boateng, Ph.D.</h1>
+        <p><strong>Assistant Professor</strong><br>
+          Department of Communications and Networking<br>
+          Xi’an Jiaotong–Liverpool University (XJTLU)<br>
+          Suzhou Industrial Park, Suzhou, China<br>
+          Address: No. 111 Ren’ai Road, Suzhou 215123, China<br>
+          <strong>Office:</strong> SC554F, SIP Campus<br>
+          <strong>Email:</strong> <a href="mailto:Gordon.Boateng@xjtlu.edu.cn">Gordon.Boateng@xjtlu.edu.cn</a><br>
+          <a href="https://scholar.google.com">Google Scholar</a> /
+          <a href="https://linkedin.com/in/gordon-owusu-boateng">LinkedIn</a>
+        </p>
       </div>
+    </div>
+
+    <div class="nav">
+      <a href="#about">About Me</a>
+      <a href="#news">News</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#publications">Publications</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
     </div>
 
     <!-- ===== About ===== -->
